@@ -6,9 +6,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{name:Client.name,schema:ClientSchema}]),forwardRef(() => AuthModule) ] ,
+  imports: [MongooseModule.forFeature([{name:Client.name,schema:ClientSchema}]),AuthModule] ,
   controllers: [ClientController],
   providers: [ClientService],
+  exports: [ClientService]
 })
 export class ClientModule {}
  
